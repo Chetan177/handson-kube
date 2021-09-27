@@ -1,0 +1,7 @@
+apiVersion: vm.codeconnect.vmworld.com/v1alpha1
+kind: VmGroup
+metadata:
+  name: vmgroup-sample
+spec:
+  # Add fields here
+  foo: bar
