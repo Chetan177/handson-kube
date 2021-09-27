@@ -4,6 +4,9 @@
 # My Operator commands
 
 ### Make sure dependencies are installed:
+
+Main Repo: [Link(https://github.com/embano1/codeconnect-vm-operator)
+Video: [Link](https://www.youtube.com/watch?v=8Ex7ybi273g&t=1492s)
 - GCC
 - GoLang
 - Kubebuilder
