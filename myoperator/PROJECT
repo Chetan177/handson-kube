@@ -1,0 +1,16 @@
+domain: codeconnect.vmworld.com
+layout:
+- go.kubebuilder.io/v3
+projectName: myoperator
+repo: myoperator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: codeconnect.vmworld.com
+  group: vm
+  kind: VmGroup
+  path: myoperator/api/v1alpha1
+  version: v1alpha1
+version: "3"
