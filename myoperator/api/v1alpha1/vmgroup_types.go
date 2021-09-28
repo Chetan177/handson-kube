@@ -28,18 +28,54 @@ type VmGroupSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of VmGroup. Edit vmgroup_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// +kubebuilder:validation:Required
+	// +kubebuilder:validation:Minimum=1
+	// +kubebuilder:validation:Maximum=4
+	CPU int32 `json:"cpu"`
+	// +kubebuilder:validation:Required
+	// +kubebuilder:validation:Minimum=1
+	// +kubebuilder:validation:Maximum=8
+	Memory int32 `json:"memory"`
+	// +kubebuilder:validation:Required
+	Template string `json:"template"`
+	// +kubebuilder:validation:Required
+	// +kubebuilder:validation:Minimum=1
+	Replicas int32 `json:"replicas"`
 }
+
+
+type StatusPhase string
+
+const (
+	RunningStatusPhase StatusPhase = "RUNNING"
+	PendingStatusPhase StatusPhase = "PENDING"
+	ErrorStatusPhase   StatusPhase = "ERROR"
+)
 
 // VmGroupStatus defines the observed state of VmGroup
 type VmGroupStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	// +kubebuilder:validation:Optional
+	Phase           StatusPhase `json:"phase"`
+	CurrentReplicas *int32      `json:"currentReplicas,omitempty"`
+	DesiredReplicas int32       `json:"desiredReplicas"`
+	LastMessage     string      `json:"lastMessage"`
 }
 
-//+kubebuilder:object:root=true
-//+kubebuilder:subresource:status
+// +kubebuilder:object:root=true
+// +kubebuilder:validation:Optional
+// +kubebuilder:subresource:status
+// +kubebuilder:subresource:scale:specpath=.spec.replicas,statuspath=.status.desiredReplicas
+// +kubebuilder:resource:shortName={"vg"}
+// +kubebuilder:printcolumn:name="Phase",type=string,JSONPath=`.status.phase`
+// +kubebuilder:printcolumn:name="Current",type=integer,JSONPath=`.status.currentReplicas`
+// +kubebuilder:printcolumn:name="Desired",type=integer,JSONPath=`.spec.replicas`
+// +kubebuilder:printcolumn:name="CPU",type=integer,JSONPath=`.spec.cpu`
+// +kubebuilder:printcolumn:name="Memory",type=integer,JSONPath=`.spec.memory`
+// +kubebuilder:printcolumn:name="Template",type=string,JSONPath=`.spec.template`
+// +kubebuilder:printcolumn:name="Last_Message",type=string,JSONPath=`.status.lastMessage`
 
 // VmGroup is the Schema for the vmgroups API
 type VmGroup struct {
