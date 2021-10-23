@@ -1,0 +1,7 @@
+apiVersion: demo.demo.operator.io/v1
+kind: DemoOperator
+metadata:
+  name: demooperator-sample
+spec:
+  # Add fields here
+  name: demoops
