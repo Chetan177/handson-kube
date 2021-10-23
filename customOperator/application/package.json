@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Application for custom operator",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "chetan177",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-request-response-logger": "^1.0.0"
+  }
+}
