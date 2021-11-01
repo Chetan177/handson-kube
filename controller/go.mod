@@ -1,4 +1,4 @@
-module github.com/chetan177/handson-kube/controller
+module mycontroller
 
 go 1.16
 

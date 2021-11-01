@@ -31,7 +31,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	"github.com/chetan177/handson-kube/controller/controllers"
+	"mycontroller/controllers"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -69,7 +69,7 @@ func main() {
 		Port:                   9443,
 		HealthProbeBindAddress: probeAddr,
 		LeaderElection:         enableLeaderElection,
-		LeaderElectionID:       "878fc17f.mycontroller.com",
+		LeaderElectionID:       "3601af7f.mycontroller.com",
 	})
 	if err != nil {
 		setupLog.Error(err, "unable to start manager")
