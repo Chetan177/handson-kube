@@ -21,3 +21,23 @@ kubebuilder init --domain codeconnect.vmworld.com --skip-go-version-check flag
 
 kubebuilder create api --group vm --version v1alpha1 --kind VmGroup --force
 ```
+
+
+# My Controller
+
+https://kubernetes.io/blog/2021/06/21/writing-a-controller-for-pod-labels/
+
+```
+kubebuilder init --domain mycontroller.com --skip-go-version-check --repo=github.com/chetan177/handson-kube/controller
+kubebuilder create api --group core --version v1 --kind Pod --controller true --resource false
+
+
+# Run
+
+make
+make run
+
+kubectl run --image=nginx my-nginx
+kubectl annotate pod my-nginx add-pod-name-label=true
+
+```

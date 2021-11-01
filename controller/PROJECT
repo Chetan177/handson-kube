@@ -2,7 +2,7 @@ domain: mycontroller.com
 layout:
 - go.kubebuilder.io/v3
 projectName: controller
-repo: github.com/chetan177/handson-kube/controller
+repo: mycontroller
 resources:
 - controller: true
   group: core
